@@ -1,5 +1,6 @@
 import { Type } from "class-transformer";
 import { IsDate, IsNotEmpty, MaxLength, MinLength } from "class-validator";
+import { IsCPF } from "src/shared/validators/cpf.validator";
 
 export class CreatePatientDto {
     @IsNotEmpty()
@@ -12,6 +13,7 @@ export class CreatePatientDto {
     birthDate: Date;
 
     @IsNotEmpty()
+    @IsCPF() 
     cpf: string;
 
     @IsNotEmpty()
