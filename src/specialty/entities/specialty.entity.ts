@@ -3,7 +3,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Table } from "typeor
 
 @Entity({ name: 'specialty'})
 export class specialtyEntity {
-    @PrimaryGeneratedColumn('rowid')
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column({name: 'name', nullable: false})

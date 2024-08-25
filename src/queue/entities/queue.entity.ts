@@ -5,7 +5,7 @@ import { JoinAttribute } from "typeorm/query-builder/JoinAttribute";
 
 @Entity('queue')
 export class QueueEntity {
-    @PrimaryGeneratedColumn('rowid')
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column({ name : 'queue_position', nullable : false, type : 'int' })
