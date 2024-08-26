@@ -7,7 +7,10 @@ import { specialtyEntity } from './entities/specialty.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([specialtyEntity])],
-  providers: [SpecialtyService, SpecialtyMapper],
+  providers: [{
+    provide: 'ISpecialtyService',
+    useClass: SpecialtyService
+  }, SpecialtyMapper],
   controllers: [SpecialtyController]
 })
 export class SpecialtyModule {}

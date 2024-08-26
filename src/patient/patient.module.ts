@@ -8,6 +8,9 @@ import { PatientMapper } from './mappers/patient.mapper';
 @Module({
   imports: [TypeOrmModule.forFeature([PatientEntity])],
   controllers: [PatientController],
-  providers: [PatientService, PatientMapper]
+  providers: [{
+    provide: 'IPatientService',
+    useClass: PatientService
+  }, PatientMapper]
 })
 export class PatientModule {}

@@ -1,13 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { SpecialtyService } from './specialty.service';
+import { Controller, Get, Inject } from '@nestjs/common';
+import { ISpecialtyService } from './interfaces/specialty.service.interface';	
 import { ReadSpecialtyDto } from './dtos/readSpecialty.dto';
 
 @Controller('specialty')
 export class SpecialtyController {
-    constructor(private readonly specialtyService : SpecialtyService){}
+    constructor(@Inject('ISpecialtyService') private readonly specialtyService : ISpecialtyService){}
 
     @Get()
     async getAllSpecialtyAsync() : Promise<ReadSpecialtyDto[]> {
-        return this.specialtyService.getAllSpecialtyAsync();
+        return await this.specialtyService.getAllSpecialtyAsync();
     }
 }
