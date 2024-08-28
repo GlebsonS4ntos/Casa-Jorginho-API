@@ -4,6 +4,6 @@ import { specialtyEntity } from "../entities/specialty.entity";
 
 export class SpecialtyMapper {
     listEntityToListRead(specialty : specialtyEntity[]) : ReadSpecialtyDto[] {
-        return plainToInstance(ReadSpecialtyDto, specialty);
+        return plainToInstance(ReadSpecialtyDto, specialty, { excludeExtraneousValues: true });
     }
 }
