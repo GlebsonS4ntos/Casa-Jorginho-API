@@ -1,5 +1,9 @@
+import { IsNumber } from "class-validator";
+
 export class UpdateQueueDto { 
+    @IsNumber()
     id: number;
-    queuePosition: number;
+
+    @IsNumber()
     specialtyId: number;
 }
