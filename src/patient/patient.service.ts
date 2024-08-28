@@ -16,7 +16,10 @@ export class PatientService implements IPatientService {
         private readonly patientMapper : PatientMapper) {}
 
     async getPatientByCpfAsync(cpf: string): Promise<ReadPatientDto> {
-        var patient = await this.patientRepository.findOneBy({cpf : cpf});
+        var patient = await this.patientRepository.findOne({
+            where: { cpf: cpf }, 
+            relations: ['queues'],
+        });
 
         if (!patient) throw new NotFoundException('Patient not found');
         
