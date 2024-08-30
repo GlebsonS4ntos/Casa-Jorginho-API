@@ -25,7 +25,9 @@ export class AuthService implements IAuthService {
         if (!validPassword) throw new UnauthorizedException('CPF or Password invalid!');     
       
         var token = new TokenDto();
-        token.acess_token = await this.jwtService.signAsync({cpf: user.cpf, name: user.employee_name});
+        token.acess_token = await this.jwtService.signAsync(
+            {cpf: user.cpf, name: user.employee_name}, 
+            {expiresIn: process.env.JWT_EXPIRES});
 
         return token;
     }
